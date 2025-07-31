@@ -15,25 +15,25 @@ import profileImage from '@/assets/profile-image.jpg';
 const About = () => {
   const timeline = [
     {
-      year: "2024",
-      title: "Senior Year - Computer Science",
-      description: "Focusing on advanced algorithms, machine learning, and capstone project development.",
+      year: "2025",
+      title: "DSA Taining",
+      description: "Focusing on advanced algorithms, data structures, and capstone project development with the Smart Intervies team.",
       type: "education"
     },
     {
       year: "2023",
-      title: "Software Engineering Intern",
-      description: "Built full-stack applications and collaborated with senior developers on production systems.",
+      title: "Web Developer Intern",
+      description: "Built full-stack application and collaborated with other developers on building a LMS platform for a EdTech Startup Edueme",
       type: "work"
     },
     {
-      year: "2022",
-      title: "Hackathon Winner",
-      description: "Won first place at University Tech Challenge with an innovative mobile app solution.",
+      year: "2023",
+      title: "Certified in BEC LinguaSkill ",
+      description: "Got certified in BEC LinguSkill exam by Cambridge University",
       type: "achievement"
     },
     {
-      year: "2021",
+      year: "2022",
       title: "Started Computer Science",
       description: "Began my journey in computer science with a focus on software development and design.",
       type: "education"
@@ -42,8 +42,8 @@ const About = () => {
 
   const interests = [
     { icon: Code, label: "Web Development", color: "bg-blue-500" },
-    { icon: Coffee, label: "Coffee Brewing", color: "bg-amber-600" },
-    { icon: Music, label: "Music Production", color: "bg-purple-500" },
+    { icon: Coffee, label: "Cooking", color: "bg-amber-600" },
+    { icon: Music, label: "Music", color: "bg-purple-500" },
     { icon: Camera, label: "Photography", color: "bg-green-500" },
   ];
 
@@ -71,7 +71,7 @@ const About = () => {
                 <div className="relative mb-6">
                   <img
                     src={profileImage}
-                    alt="Alex Johnson"
+                    alt="Rohit Kumar Patil"
                     className="w-48 h-48 rounded-full mx-auto object-cover shadow-elegant hover:shadow-glow transition-smooth"
                   />
                   <div className="absolute -bottom-2 -right-2 bg-green-500 w-8 h-8 rounded-full border-4 border-white flex items-center justify-center">
@@ -79,21 +79,21 @@ const About = () => {
                   </div>
                 </div>
                 
-                <h2 className="text-2xl font-bold mb-2">Alex Johnson</h2>
-                <p className="text-primary font-medium mb-4">Computer Science Student</p>
+                <h2 className="text-2xl font-bold mb-2">Rohit Kumar Patil</h2>
+                <p className="text-primary font-medium mb-4">Information Technology Student</p>
                 
                 <div className="space-y-2 text-sm text-muted-foreground">
                   <div className="flex items-center justify-center">
                     <MapPin className="w-4 h-4 mr-2" />
-                    San Francisco, CA
+                    Hyderabad, Telangana.
                   </div>
                   <div className="flex items-center justify-center">
                     <Calendar className="w-4 h-4 mr-2" />
-                    Expected Graduation: May 2024
+                    Expected Graduation: May 2026
                   </div>
                   <div className="flex items-center justify-center">
                     <GraduationCap className="w-4 h-4 mr-2" />
-                    UC Berkeley
+                    ACE Engineering College
                   </div>
                 </div>
               </div>
@@ -131,19 +131,28 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-6">My Story</h3>
               <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
                 <p>
-                  I'm a passionate computer science student at UC Berkeley with a deep love for creating 
-                  digital experiences that make a difference. My journey into tech started during high school 
-                  when I built my first website for a local nonprofit organization.
+                  I'm Rohit Kumar Patil, a passionate and motivated B.Tech student in the Information Technology branch 
+                  at ACE Engineering College, Hyderabad, India. My academic journey has equipped me with a solid foundation 
+                  in core computer science concepts, while my curiosity and dedication have driven me to explore beyond the 
+                  curriculum. From developing websites and understanding system logic to diving into areas like artificial 
+                  intelligence and robotics, I am constantly looking to sharpen my skills and contribute meaningfully 
+                  to the world of technology.
                 </p>
                 <p>
-                  What excites me most about software development is the perfect blend of logical problem-solving 
-                  and creative expression. Whether I'm architecting a complex backend system or crafting an 
-                  intuitive user interface, I find joy in every aspect of the development process.
+                  Technically, I have hands-on experience with web development using HTML, CSS, JavaScript, 
+                  React, and Tailwind CSS. I also enjoy solving real-world problems through code, building 
+                  intuitive user interfaces, and optimizing functionality in every project I take up. I'm 
+                  currently enhancing my skills in full-stack development, learning backend technologies, 
+                  and exploring how emerging fields like AI and automation intersect with software engineering.
+                  I'm particularly interested in building scalable, smart, and accessible tech solutions that 
+                  solve real problems and make an impact.
                 </p>
                 <p>
-                  Beyond coding, I'm an avid coffee enthusiast who enjoys exploring different brewing methods, 
-                  a music producer in my spare time, and someone who believes in the power of technology to 
-                  solve real-world problems and connect people.
+                  Outside the world of tech, I'm a creative soul who enjoys traveling, listening to music, 
+                  photography, video editing, and cooking. I believe that creativity is an important part of 
+                  problem-solving in tech, and I often find inspiration for projects from my day-to-day life.
+                  My strengths lie in my positive attitude, self-confidence, and ability to adapt and learn 
+                  quickly. Whether working solo or in a team, I bring energy, focus, and a growth mindset to everything I do.
                 </p>
               </div>
             </Card>

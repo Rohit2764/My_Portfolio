@@ -1,16 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail, Download } from 'lucide-react';
+import { ArrowDown, GithubIcon, Linkedin, Mail, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import heroBackground from '@/assets/hero-background.jpg';
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState(0);
   const texts = [
-    "Full-Stack Developer",
-    "UI/UX Designer", 
-    "Problem Solver",
-    "Tech Enthusiast"
+    "Full-Stack Developer"
   ];
 
   useEffect(() => {
@@ -18,7 +15,7 @@ const HeroSection = () => {
       setCurrentText((prev) => (prev + 1) % texts.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, );
 
   const scrollToContent = () => {
     window.scrollTo({
@@ -47,12 +44,12 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 text-center justify-center max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
         <div className="animate-slide-up">
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6">
             Hi, I'm{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 animate-gradient-shift bg-300%">
-              Alex Johnson
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-950 via-blue-200 to-pink-700 animate-gradient-shift bg-300%">
+              Rohit Kumar Patil
             </span>
           </h1>
           
@@ -91,10 +88,10 @@ const HeroSection = () => {
           </div>
 
           {/* Social links */}
-          <div className="flex justify-center space-x-6 mb-12">
+          <div className="flex justify-center space-x-6 mb-32">
             {[
-              { icon: Github, href: "https://github.com", label: "GitHub" },
-              { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+              { icon: GithubIcon, href: "https://github.com/Rohit2764", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/rohitkumarpatil-88518124b", label: "LinkedIn" },
               { icon: Mail, href: "mailto:alex@example.com", label: "Email" },
             ].map(({ icon: Icon, href, label }, index) => (
               <a

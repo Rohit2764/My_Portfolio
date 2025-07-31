@@ -46,7 +46,7 @@ const Navigation = () => {
             to="/" 
             className="text-2xl font-bold primary-gradient bg-clip-text text-transparent hover-glow"
           >
-            Portfolio
+            
           </Link>
 
           {/* Desktop Navigation */}
@@ -61,12 +61,14 @@ const Navigation = () => {
                   to={item.path}
                   className={cn(
                     'flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-smooth',
-                    isActive
-                      ? 'text-primary bg-primary/10'
-                      : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
+                    item.path === '/' // Special styling for Home
+                    ? 'text-black dark:text-white'
+                    : isActive
+                    ? 'text-primary font-semibold dark:text-white'
+                    : 'text-black dark:text-muted-foreground hover:text-primary hover:bg-primary/5'
                   )}
                 >
-                  <Icon className="w-4 h-4" />
+                  <Icon className="w-4 h-4 text-black dark:text-muted-foreground" />
                   <span>{item.name}</span>
                 </Link>
               );
@@ -112,12 +114,12 @@ const Navigation = () => {
                     onClick={() => setIsOpen(false)}
                     className={cn(
                       'flex items-center space-x-3 px-4 py-3 rounded-md text-sm font-medium transition-smooth w-full',
-                      isActive
-                        ? 'text-primary bg-primary/10'
-                        : 'text-muted-foreground hover:text-primary hover:bg-primary/5'
-                    )}
+                        isActive
+                        ? 'bg-primary/10 text-primary'
+                          : 'text-black dark:text-muted-foreground hover:text-primary hover:bg-primary/5'
+                                )}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className="w-4 h-4 text-black dark:text-muted-foreground" />
                     <span>{item.name}</span>
                   </Link>
                 );

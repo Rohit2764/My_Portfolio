@@ -28,8 +28,8 @@ const QuickLinksSection = () => {
       color: "from-purple-500 to-pink-600"
     },
     {
-      title: "Education",
-      description: "My academic background and achievements",
+      title: "Education and Skills",
+      description: "My academic background and skillset",
       icon: GraduationCap,
       path: "/education",
       color: "from-green-500 to-blue-600"

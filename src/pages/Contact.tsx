@@ -5,6 +5,9 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { InlineWidget } from "react-calendly";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { QRCodeCanvas } from "qrcode.react";
 import { 
   Mail, 
   Phone, 
@@ -28,6 +31,19 @@ const Contact = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [dialog, setDialog] = useState<null | "schedule" | "resume" | "qr">(null);
+
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  const { name, email, subject, message } = formData;
+  const text = `Name: ${name}%0AEmail: ${email}%0ASubject: ${subject}%0AMessage: ${message}`;
+  const phoneNumber = "918341166882"; // <-- replace with your WhatsApp number
+  const url = `https://wa.me/${phoneNumber}?text=${text}`;
+  window.open(url, "_blank");
+  };
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,23 +72,23 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "alex.johnson@email.com",
-      href: "mailto:alex.johnson@email.com",
+      value: "rohitkpatil04@gmail.com",
+      href: "mailto:rohitkpatil04@gmail.com",
       description: "Best for detailed inquiries"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-      description: "Available 9 AM - 6 PM PST"
+      value: "+91 8341166882",
+      href: "tel:+91 8341166882",
+      description: ""
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "Hyderabad, Telangana, India",
       href: "https://maps.google.com",
-      description: "Open to remote opportunities"
+      description: "Open to all opportunities"
     }
   ];
 
@@ -80,20 +96,20 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com",
-      username: "@alexjohnson"
+      href: "https://github.com/Rohit2764",
+      username: "@Rohit2764"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com",
-      username: "Alex Johnson"
+      href: "https://www.linkedin.com/in/rohitkumarpatil-88518124b",
+      username: "Rohit Kumar Patil"
     },
     {
       icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
-      username: "@alexjohnson_dev"
+      label: "X",
+      href: "https://x.com/Rohitkpatil45?t=zOh2Wtd7DLtx7zCKvj7UnA&s=09",
+      username: "@Rohitkpatil45"
     }
   ];
 
@@ -103,21 +119,31 @@ const Contact = () => {
       title: "Schedule a Call",
       description: "Book a 30-minute chat",
       action: "Schedule",
-      color: "from-blue-500 to-purple-600"
-    },
+      color: "from-blue-500 to-purple-600",
+      onClick: () => setDialog("schedule")
+    }
+,
     {
       icon: Download,
-      title: "Download Resume",
-      description: "Get my latest CV",
-      action: "Download",
-      color: "from-green-500 to-blue-600"
-    },
+      title: 'Download Resume',
+      description: 'Get my latest CV',
+      action: 'Download',
+      color: 'from-green-500 to-blue-600',
+      onClick: () => {
+        const link = document.createElement('a');
+        link.href = '/Rohit_Kumar_Patil_Resume.pdf';
+        link.download = 'Rohit_Kumar_Patil_Resume.pdf';
+        link.click();
+      }
+    }
+,
     {
       icon: QrCode,
       title: "QR Code",
       description: "Quick contact info",
       action: "View",
-      color: "from-purple-500 to-pink-600"
+      color: "from-purple-500 to-pink-600",
+      onClick: () => setDialog("qr")
     }
   ];
 
@@ -198,6 +224,7 @@ const Contact = () => {
                   return (
                     <div
                       key={action.title}
+                      onClick={() => action.onClick && action.onClick()}
                       className="flex items-center justify-between p-3 rounded-lg hover:bg-muted/50 transition-colors group cursor-pointer"
                     >
                       <div className="flex items-center space-x-3">
@@ -224,7 +251,7 @@ const Contact = () => {
             <Card className="p-8 card-gradient hover-lift animate-slide-up" style={{ animationDelay: '0.1s' }}>
               <h3 className="text-2xl font-bold mb-6">Send Me a Message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleWhatsAppSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name *</Label>
@@ -300,12 +327,31 @@ const Contact = () => {
                 </Button>
               </form>
 
+              {/* Schedule Dialog */}
+              <Dialog open={dialog === "schedule"} onOpenChange={() => setDialog(null)}>
+                  <DialogContent className="w-full max-w-2xl h-[600px] overflow-hidden">
+                  <InlineWidget url="https://calendly.com/rohitkpatil04/30min" />
+              </DialogContent>
+              </Dialog>
+
+              {/* QR Code Dialog */}
+              <Dialog open={dialog === "qr"} onOpenChange={() => setDialog(null)}>
+              <DialogContent className="text-center space-y-4">
+                  <h2 className="text-lg font-semibold">Scan to Visit My Portfolio</h2>
+                  <QRCodeCanvas value="https://your-portfolio-url.com" size={200} />
+                  <p className="text-sm text-muted-foreground">You can scan this to get my contact info quickly.</p>
+              </DialogContent>
+              </Dialog>
+
+
+
               <div className="mt-8 p-4 bg-muted/50 rounded-lg">
                 <p className="text-sm text-muted-foreground">
                   <strong>Response Time:</strong> I typically respond within 24 hours. 
                   For urgent matters, feel free to reach out directly via phone or LinkedIn.
                 </p>
               </div>
+
             </Card>
           </div>
         </div>
