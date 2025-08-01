@@ -130,11 +130,14 @@ const Contact = () => {
       action: 'Download',
       color: 'from-green-500 to-blue-600',
       onClick: () => {
-        const link = document.createElement('a');
-        link.href = '/Rohit_Kumar_Patil_Resume.pdf';
-        link.download = 'Rohit_Kumar_Patil_Resume.pdf';
-        link.click();
+          const link = document.createElement('a');
+          link.href = '/Resume.pdf'; // ✅ must match path in /public
+          link.download = 'Rohit_Kumar_Patil_Resume.pdf';
+          document.body.appendChild(link); // optional, for better compatibility
+          link.click();
+          document.body.removeChild(link);
       }
+
     }
 ,
     {
